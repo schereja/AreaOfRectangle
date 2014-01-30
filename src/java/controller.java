@@ -39,9 +39,8 @@ private static final String RESULT_PAGE = "result.jsp";
               String width = request.getParameter("width");
             CalculateService cs = new CalculateService(length, width);
             double area = cs.getArea();
-            List newList = new ArrayList();
-            newList.add(area);
-            request.setAttribute("area", newList);
+            
+            request.setAttribute("area", area);
             RequestDispatcher view =
                 request.getRequestDispatcher(RESULT_PAGE);
         view.forward(request, response);

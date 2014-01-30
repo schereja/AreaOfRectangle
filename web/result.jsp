@@ -14,14 +14,15 @@
         <title>Area of Rectangle</title>
     </head>
     <body>
-        Your area for the rectangle is: 
-        <%
-        List result = (List)request.getAttribute("area");
-        Iterator it = result.iterator();
-        while(it.hasNext()) {
-            out.print(it.next());
-        }
+           <%
+        
+        String msg = "No msg returned, input invalid.";
+        Object objMsg = request.getAttribute("area");
+        msg = objMsg == null ? msg :objMsg.toString();
+       
     %>
+    Your Area is: 
+    <%= msg%>
     <br /> 
     <a href="index.html">Go back</a>
     </body>
