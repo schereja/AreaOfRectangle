@@ -6,8 +6,6 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author schereja
  */
 @WebServlet(urlPatterns = {"/calculate"})
-public class controller extends HttpServlet {
+public class Controller extends HttpServlet {
 private static final String RESULT_PAGE = "result.jsp";
+private static final String CALC_TYPE = "calcType";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,12 +35,17 @@ private static final String RESULT_PAGE = "result.jsp";
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-              String length = request.getParameter("length");
-              String width = request.getParameter("width");
-            CalculateService cs = new CalculateService(length, width);
-            double area = cs.getArea();
+                String calcType = request.getParameter(CALC_TYPE);
+                CalculateService cs = new CalculateService();
+                if(calcType.equalsIgnoreCase("Rectangle")){
+                   cs.getResultFromType(request, Shapes.RECTANGLE);
+                } else if(calcType.equalsIgnoreCase("Circle")){
+                    cs.getResultFromType(request, Shapes.CIRCLE);
+                } else if(calcType.equalsIgnoreCase("Triangle")){
+                    cs.getResultFromType(request, Shapes.TRIANGLE);
+                }
             
-            request.setAttribute("area", area);
+
             RequestDispatcher view =
                 request.getRequestDispatcher(RESULT_PAGE);
         view.forward(request, response);

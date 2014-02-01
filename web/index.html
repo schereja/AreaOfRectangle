@@ -11,15 +11,34 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <div>
-            <form id="calculateArea" name="calculateArea" action="calculate" method="POST">
+        <div id ="recArea">
+            <form id="calculateArea" name="calculateArea" action="calculate?calcType=rectangle" method="POST">
             Please enter Length and Width:
             <br/>
             Length: <input type="text" id="length" name="length">
             <br/>
             Width: <input type="text" id="width"  name="width">
             <br />
-            <input type="submit" id="submit" name="submit">
+            <input type="submit" id="submitRec" name="submit">
+            </form>
+        </div>
+        <div id="circleArea">
+            <form id="calculateCircleArea" name="calculateCircleArea" action="calculate?calcType=circle" method="POST">
+                Please enter radius of circle:
+                <br />
+                Radius:<input type="text" id="radius"  name="radius">
+                <br />
+            <input type="submit" id="submitCircle" name="submit">
+            </form>
+        </div>
+        <div id="thirdSideOfTriangle">
+            <form id="thirdSideOfTriangleForm" name="thirdSideOfTriangle" action="calculate?calcType=triangle" method="POST">
+                Please enter Side 1:
+                <br />
+                Please enter Side 2:
+                <br />
+                Please enter Side 3:
+            <input type="submit" id="submitTriangle" name="submit">
             </form>
         </div>
     </body>

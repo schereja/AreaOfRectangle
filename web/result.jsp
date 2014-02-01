@@ -14,16 +14,19 @@
         <title>Area of Rectangle</title>
     </head>
     <body>
-           <%
-        
-        String msg = "No msg returned, input invalid.";
-        Object objMsg = request.getAttribute("area");
-        msg = objMsg == null ? msg :objMsg.toString();
-       
-    %>
-    Your Area is: 
-    <%= msg%>
+        <%
+            String firstLine = "Your result is: ";
+         
+            Object answer = request.getAttribute("result");
+            String stringAnswer = answer.toString();
+            Object shape = request.getAttribute("shape");
+            String stringShape = shape.toString();
+            %>
     <br /> 
+    <h1><%=firstLine%></h1>
+    <br/>
+    <h1><%=stringAnswer%></h1>
+    
     <a href="index.html">Go back</a>
     </body>
 </html>

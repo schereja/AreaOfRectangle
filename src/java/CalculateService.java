@@ -1,3 +1,6 @@
+
+import javax.servlet.http.HttpServletRequest;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,40 +12,45 @@
  * @author schereja
  */
 public class CalculateService {
-    private double length;
-    private double width;
+    private double calculatedResult;
     
     /**
      * Calculate service constructor which takes the length and width and sends
      * private variables
      * 
-     * @param length - String value from the input box
-     * @param width  - String value from the input box
      */
-    public CalculateService(String length, String width){
-        setLength(Double.parseDouble(length));
-        setWidth(Double.parseDouble(width));
+    public CalculateService(){
+   
     }
-
-    public double getLength() {
-        return length;
+    public HttpServletRequest getResultFromType(HttpServletRequest request, Shapes shape){
+        switch(shape){
+            case RECTANGLE:
+                String stringLength = request.getParameter("length");
+                String stringWidth = request.getParameter("width");
+                double dblLength = 0;  
+                double dblWidth = 0;
+               
+                dblLength = Double.valueOf(stringLength);
+                dblWidth = Double.valueOf(stringWidth);
+               
+                calculatedResult = dblLength * dblWidth;
+                request.setAttribute("shape", shape);
+                request.setAttribute("result", calculatedResult);
+                break;
+            case CIRCLE:
+                String sRadius = request.getParameter("radius");
+                double dRadius = 0;
+                
+                dRadius = Double.valueOf(sRadius);
+                
+                calculatedResult = dRadius * Math.PI;
+                request.setAttribute("shape", shape);
+                request.setAttribute("result", calculatedResult);
+                break;
+        }
+        return request;
     }
-
-    public void setLength(double length) {
-        this.length = length;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
-    }
-
-    public double getArea() {
-        return length * width;
-    }
+    
 
     
     
