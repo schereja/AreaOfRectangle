@@ -54,14 +54,17 @@ public class CalculateService {
                 double sideOne = 0;
                 double sideTwo = 0;
                 double sideThree = 0;
-                if(stringSideOne != null){
-                    sideOne = Double.valueOf(stringSideOne);
-                }
-                if(stringSideTwo != null){
+                if("".equals(stringSideOne)){
                     sideTwo = Double.valueOf(stringSideTwo);
-                }
-                if(stringSideThree != null){
                     sideThree = Double.valueOf(stringSideThree);
+                }
+                if("".equals(stringSideTwo)){
+                    sideOne = Double.valueOf(stringSideOne);
+                    sideThree = Double.valueOf(stringSideThree);
+                }
+                if("".equals(stringSideThree)){
+                    sideOne = Double.valueOf(stringSideOne);
+                    sideTwo = Double.valueOf(stringSideTwo);
                 }
                 if(sideOne == 0){
                     calculatedResult = Math.sqrt((sideThree*sideThree)-(sideTwo*sideTwo));

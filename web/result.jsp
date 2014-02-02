@@ -26,7 +26,8 @@
     <h1><%=firstLine%></h1>
     <br/>
     <h1><%=stringAnswer%></h1>
-    
+    <br/>
+    <h1><%=stringShape%></h1>
     <a href="index.html">Go back</a>
     </body>
 </html>
