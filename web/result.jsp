@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Area of Rectangle</title>
+        <title>${shape} Results</title>
     </head>
     <body>
         <%
@@ -23,11 +23,9 @@
             String stringShape = shape.toString();
             %>
     <br /> 
-    <h1><%=firstLine%></h1>
+    Your result is: ${result}
     <br/>
-    <h1><%=stringAnswer%></h1>
-    <br/>
-    <h1><%=stringShape%></h1>
+    
     <a href="index.html">Go back</a>
     </body>
 </html>
